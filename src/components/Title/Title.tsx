@@ -15,4 +15,5 @@ const TitleStyle = styled.h1`
   color: indigo;
   text-align: center;
   font-weight: 400;
+  margin: 1rem;
 `;
