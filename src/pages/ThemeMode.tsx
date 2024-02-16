@@ -1,7 +1,7 @@
 import Title from "../components/Title/Title";
 import Article from "../components/Article/Article";
 
-// shadcn 이용해서 ui 만들어보기
+// shadcn 이용해서 ui 만들어보기 done
 // zustand를 이용하여 전역 상태 관리해보기
 
 const ThemeMode = () => {
