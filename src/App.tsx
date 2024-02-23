@@ -3,7 +3,6 @@ import { themeStyle } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ThemeMode from "./pages/ThemeMode";
-
 import { useThemeListener } from "./hook/useThemeListener";
 import { persistLocalStorage } from "./lib/storage";
 

@@ -2,14 +2,16 @@ import { persistLocalStorage } from "@/lib/storage";
 import { useEffect } from "react";
 
 export const useThemeListener = () => {
-  const { setTheme } = persistLocalStorage();
+  const { isUserSelectedTheme, setTheme } = persistLocalStorage();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const mediaQueryListener = () => {
-      const isDarkMode = mediaQuery.matches;
-      setTheme(isDarkMode ? "dark" : "light");
+      if (!isUserSelectedTheme) {
+        const isDarkMode = mediaQuery.matches;
+        setTheme(isDarkMode ? "dark" : "light");
+      }
     };
 
     mediaQuery.addEventListener("change", mediaQueryListener);
@@ -17,5 +19,5 @@ export const useThemeListener = () => {
     mediaQueryListener();
 
     return () => mediaQuery.removeEventListener("change", mediaQueryListener);
-  }, []);
+  }, [isUserSelectedTheme, setTheme]);
 };
