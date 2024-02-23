@@ -20,7 +20,11 @@ const ThemeMode = () => {
     <>
       <Title>Light/dark mode with toggle button</Title>
       <div className="flex justify-center my-5 ">
-        <Switch checked={isDarkMode} onClick={toggleTheme} />
+        <Switch
+          checked={isDarkMode}
+          onClick={toggleTheme}
+          className="data-[state=checked]:bg-gray-500 "
+        />
       </div>
 
       <Article>
