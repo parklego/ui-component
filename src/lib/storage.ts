@@ -3,29 +3,18 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 interface StorageType {
   theme: string;
-  changeTheme: () => void;
+  setTheme: (mode: string) => void;
 }
 
-const themeChecker = () => {
-  const isBrowserDarkMode = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
-
-  const initTheme = isBrowserDarkMode ? "dark" : "light";
-
-  return initTheme;
-};
-
-export const useLocalStorage = create<StorageType>()(
+export const persistLocalStorage = create<StorageType>()(
   persist(
-    (set, get) => ({
-      theme: themeChecker(),
-      changeTheme: () =>
-        set({ theme: get().theme === "light" ? "dark" : "light" }),
+    (set) => ({
+      theme: "light",
+      setTheme: (mode) => set({ theme: mode }),
     }),
     {
-      name: "theme", // name of item in the storage (must be unique)
-      storage: createJSONStorage(() => localStorage), // (optional) by default the 'localStorage' is used
+      name: "theme",
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
