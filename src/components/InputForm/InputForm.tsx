@@ -24,11 +24,14 @@ const InputForm = ({ form, formList }: InputFormProps) => {
   } = form;
 
   const onSubmit = (data: object) => {
-    alert(JSON.stringify(data));
+    alert(JSON.stringify(data, null, 2));
   };
 
   return (
-    <form className="p-5 border lg:w-1/2" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="p-8 border rounded lg:w-1/2"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       {formList.map((item, idx) => (
         <div className="my-5 " key={idx}>
           <Input
