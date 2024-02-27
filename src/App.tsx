@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ThemeMode from "./pages/ThemeMode";
 import { useThemeListener } from "./hook/useThemeListener";
 import { persistLocalStorage } from "./lib/storage";
+import SignUp from "./pages/SignUp";
 
 function App() {
   useThemeListener();
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<ThemeMode />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </Router>
     </ThemeProvider>
