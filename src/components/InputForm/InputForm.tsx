@@ -5,7 +5,10 @@ import { Button } from "../ui/button";
 interface FormListItem {
   name: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
+  value?: string;
+  label: string;
+  isRequired: boolean;
 }
 
 interface InputFormProps {
@@ -14,7 +17,6 @@ interface InputFormProps {
 }
 
 const InputForm = ({ form, formList }: InputFormProps) => {
-  console.log(form);
   const {
     register,
     handleSubmit,
@@ -26,15 +28,18 @@ const InputForm = ({ form, formList }: InputFormProps) => {
   };
 
   return (
-    <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+    <form className="p-5 border lg:w-1/2" onSubmit={handleSubmit(onSubmit)}>
       {formList.map((item, idx) => (
-        <div className="my-10" key={idx}>
+        <div className="my-5 " key={idx}>
           <Input
             type={item.type}
             placeholder={item.placeholder}
+            value={item.value}
+            label={item.label}
+            isRequired={item.isRequired}
             {...register(item.name)}
           />
-          <p className="h-1 text-red-500">
+          <p className="h-1 text-red-500 ">
             <>{errors[item.name]?.message}</>
           </p>
         </div>

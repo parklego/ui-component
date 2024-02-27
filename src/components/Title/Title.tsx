@@ -12,8 +12,8 @@ const Title = ({ children }: TitleProps) => {
 export default Title;
 
 const TitleStyle = styled.h1`
+  color: ${(props) => props.theme.color};
   font-size: 2.5rem;
-  color: indigo;
   text-align: center;
   font-weight: 400;
   margin: 1rem;
