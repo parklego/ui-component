@@ -1,6 +1,7 @@
 import Input from "../Input/Input";
 import { UseFormReturn } from "react-hook-form";
 import { Button } from "../ui/button";
+import Checkbox from "../Checkbox/Checkbox";
 
 interface FormListItem {
   name: string;
@@ -34,14 +35,19 @@ const InputForm = ({ form, formList }: InputFormProps) => {
     >
       {formList.map((item, idx) => (
         <div className="my-5 " key={idx}>
-          <Input
-            type={item.type}
-            placeholder={item.placeholder}
-            value={item.value}
-            label={item.label}
-            isRequired={item.isRequired}
-            {...register(item.name)}
-          />
+          {item.type !== "checkbox" ? (
+            <Input
+              type={item.type}
+              placeholder={item.placeholder}
+              value={item.value}
+              label={item.label}
+              isRequired={item.isRequired}
+              {...register(item.name)}
+            />
+          ) : (
+            <Checkbox value={item.value} {...register(item.name)} />
+          )}
+
           <p className="h-1 text-red-500 ">
             <>{errors[item.name]?.message}</>
           </p>
