@@ -1,6 +1,6 @@
 import InputForm from "@/components/InputForm/InputForm";
 import Modal from "@/components/Modal/Modal";
-import Portal from "@/components/Modal/Potal";
+import Portal from "@/components/Modal/Portal";
 import Title from "@/components/Title/Title";
 import { Button } from "@/components/ui/button";
 import { terms } from "@/helper/terms";
@@ -31,7 +31,6 @@ const SignUp = () => {
             <Button onClick={handleModal}>약관보기</Button>
           </div>
         </div>
-
         <div className="flex justify-center">
           <InputForm form={signUpform} formList={formList} />
         </div>
